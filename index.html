@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        header h3 {
+            margin: 0;
+        }
+        nav button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 12px;
+            background-color: rgb(67, 67, 245);
+            color: #fff;
+        }
+        .img {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .img img {
+            height: 180px;
+            width: 180px;
+            border-radius: 50%;
+        }
+        .b1 {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .b1 h2 {
+            font-size: 50px;
+        }
+        .b1 p {
+            font-size: x-large;
+        }
+        .sides {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .sides .side1, .sides .side2 {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+        .projects {
+            padding: 20px;
+        }
+        .projects ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0;
+        }
+        .projects ul li {
+            list-style: none;
+            background: #181f26;
+            margin: 13px;
+            padding: 10px;
+            border-radius: 15px;
+            width: 300px;
+        }
+        .projects ul li img {
+            border-radius: 15px;
+            width: 100%;
+        }
+        .projects ul li p {
+            text-align: center;
+        }
+        .socials {
+            text-align: center;
+            padding: 20px;
+        }
+        .socials a {
+            margin: 0 10px;
+        }
+        @media (min-width: 768px) {
+            .sides {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 100px 150px;
+            }
+            .sides .side1, .sides .side2 {
+                width: 45%;
+                padding: 20px;
+            }
+            .sides .side2 h2 {
+                margin-top: -13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>Madesh</h3>
+        <nav>
+            <a href="https://linkedin.com/in/MadeshA">
+                <button>Contact</button>
+            </a>
+        </nav>
+    </header>
+    <div class="img">
+        <img src="img2.jpg" alt="">
+    </div>
+    <div class="b1">
+        <h2>Hey I'm Madesh</h2>
+        <p>Developer, Designer</p>
+    </div>
+    <div class="sides">
+        <div class="side1">
+            <h2>My career</h2>
+            <p> I am an aspiring engineer with a strong passion for designing and developing innovative solutions 
+                in the digital space. My journey in engineering has been fueled by a curiosity for how things work 
+                and a desire to create impactful and efficient designs. With a solid foundation in 
+                engineering principles and a keen eye for detail, I have honed my skills in website design and 
+                development, aiming to bridge the gap between functionality and aesthetics.
+            </p>
+        </div>
+        <div class="side2">
+            <h2>Skills</h2>
+            <p>
+                <img src="https://skillicons.dev/icons?i=cpp,html,css,arduino,react" />
+                <img src="https://skillicons.dev/icons?i=python,javascript,c,mysql,bash" />
+            </p>
+        </div>
+    </div>
+    <h2>Projects</h2>
+    <div class="projects">
+        <ul>
+            <li><img src="Screenshot (580).png" ><p>Project 1</p></li>
+            <li><img src="Screenshot (581).png" ><p>Project 2</p></li>
+            <li><img src="Screenshot (579).png" ><p>Project 3</p></li>
+        </ul>
+    </div>
+    <div class="socials">
+        <a href="https://github.com/Madeshmadmax7" target="_blank">
+            <img src="https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white" alt="github" />
+        </a>
+        <a href="https://linkedin.com/in/MadeshA" target="_blank">
+            <img src="https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin" />
+        </a>
+        <a href="https://instagram.com/_i_mad_max_" target="_blank">
+            <img src="https://img.shields.io/badge/instagram-%23000000.svg?&style=for-the-badge&logo=instagram&logoColor=white" alt="instagram" />
+        </a>
+        <a href="https://twitter.com/Madeshmadmax" target="_blank">
+            <img src="https://img.shields.io/badge/twitter-%2300acee.svg?&style=for-the-badge&logo=twitter&logoColor=white" alt="twitter" />
+        </a>
+    </div>
+</body>
+</html>
