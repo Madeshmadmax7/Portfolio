@@ -23,6 +23,7 @@ header h3 {
     margin: 0;
 }
 
+
 nav{
     display: flex;
     gap: 5px;
@@ -221,7 +222,60 @@ button i {
     }
 }
 
+
+@media (max-width: 1024px) {
+    .projects ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+    }
+    .projects ul ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    .projects ul li {
+        width: 90%;
+        margin: 10px auto;
+    }
+    .projects img {
+        width: 100%;
+        height: auto;
+    }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    header {
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+    }
+    header h3 {
+        margin: 0;
+    }
+    header h3 a {
+        font-size: 18px;
+    }
+}
+
 @media (max-width: 600px) {
+    header {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    header h3 {
+        font-size: 18px;
+    }
+
+    nav button {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
     .projects ul {
         flex-direction: column;
         align-items: center;
@@ -229,33 +283,23 @@ button i {
     }
 
     .projects ul li {
-        justify-content: center;
-        align-items: center;
-        width: 90%;
-        margin-left: 100px;
-        margin-bottom: 20px;
+        width: 85%;
+        margin: 10px 0;
+        padding: 15px;
     }
 
-    .load{
-        display: flex;
+    .load {
         flex-direction: row;
-        gap: 20px;
+        align-items: center;
         justify-content: center;
+        gap: 0px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+        text-align: center;
     }
-    .load h3{
-        margin-bottom: 50px;
-    }
-    .loader {
-        justify-content: center;
-        width: 70px;
-        height: 40px;
-        outline: 2px solid #fff;
-        background:
-        radial-gradient(farthest-side,red 90%,#0000) 0 0/8px 8px no-repeat,
-        radial-gradient(farthest-side,#000 90%,#0000) 0 0/8px 8px no-repeat,
-        linear-gradient(#fff 0 0) 50%/10px 100% no-repeat,
-        conic-gradient(from  90deg at 10px 10px,#0000 90deg,#fff 0),
-        conic-gradient(from -90deg at 60px 30px,#0000 90deg,#fff 0);
-        animation: l9 2s infinite;
+    .load h3 {
+        margin: 0;
+        margin-top: 20px;
+        font-size: 18px;
     }
 }

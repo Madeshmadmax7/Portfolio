@@ -283,3 +283,98 @@ nav button {
         font-size: 18px;
     }
 }
+
+
+@media (max-width: 1200px) {
+    .contact-container {
+        padding: 70px 30px;
+    }
+
+    .contact-form, .memory-game {
+        width: 70%;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 20px;
+    }
+
+    .contact-form, .memory-game {
+        width: 90%;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    header h3 {
+        font-size: 18px;
+    }
+
+    nav button {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .contact-container {
+        padding: 30px 10px;
+    }
+
+    .contact-form {
+        padding: 40px 20px;
+        width: 95%;
+    }
+
+    .contact-form h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .contact-form form input,
+    .contact-form form textarea {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .memory-game {
+        padding: 40px 0;
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        justify-content: center;
+        padding: 0 40px;
+    }
+
+    .card {
+        width: 75px;
+        height: 95px;
+    }
+
+    .timer-container {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+
+    .completion-message {
+        font-size: 16px;
+    }
+}
