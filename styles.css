@@ -1,13 +1,19 @@
 :root {
     --twinkle-duration: 4s;
 }
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: #000;
     color: #fff;
     font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
+    overflow-x: hidden;
 }
+
+
 header {
     margin-top: 10px;
     display: flex;
@@ -17,10 +23,25 @@ header {
     align-items: center;
     padding: 10px;
 }
+
 header h3 {
     margin: 0;
 }
 
+nav {
+    display: flex;
+    gap: 5px;
+    text-decoration: none;
+}
+
+nav button {
+    display: flex;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgb(67, 67, 245);
+    color: #fff;
+}
 
 .container {
     width: 100%;
@@ -32,7 +53,7 @@ header h3 {
     margin-top: 10px;
     border-radius: 10px;
     padding-left: 10px;
-  }
+}
 .container-2 {
     
     width: 100%;
@@ -46,19 +67,19 @@ header h3 {
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
-  }
-  
-  .icon {
+}
+
+.icon {
     width: 50px;
     height: 50px;
     position: absolute;
     border-radius: 50%;
     transition: none;
     padding: 10px;
-  }
-  
-  
-  .final-grid {
+}
+
+
+.final-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -74,13 +95,7 @@ header h3 {
     margin-left: 8px;
 }
 
-nav button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 12px;
-    background-color: rgb(67, 67, 245);
-    color: #fff;
-}
+
 .skills-section {
     text-align: center;
     padding: 40px 10px;
@@ -322,6 +337,19 @@ nav button {
 }
 
 @media (max-width: 600px) {
+    header {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    header h3 {
+        font-size: 18px;
+    }
+
+    nav button {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
     .icon {
         width: 30px;
         height: 30px;

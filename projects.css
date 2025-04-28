@@ -18,14 +18,17 @@ header {
     align-items: center;
     padding: 10px;
 }
+
 header h3 {
     margin: 0;
 }
+
 nav{
     display: flex;
     gap: 5px;
     text-decoration: none;
 }
+
 nav button {
     display: flex;
     padding: 8px 16px;
@@ -34,9 +37,11 @@ nav button {
     background-color: rgb(67, 67, 245);
     color: #fff;
 }
+
 .projects {
     padding: 20px;
 }
+
 
 .projects ul {
     display: flex;
@@ -199,10 +204,11 @@ button i {
     margin-bottom: 25px;
 }
 
+
 @media (max-width: 600px) {
     header {
-        flex-direction: row;
-        gap: 0;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     header h3 {
@@ -212,5 +218,17 @@ button i {
     nav button {
         font-size: 12px;
         padding: 5px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects ul {
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .projects ul li {
+    width: 90%;
+    margin-bottom: 20px;
     }
 }
