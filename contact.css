@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+header {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 75px;
+    margin-right: 75px;
+    align-items: center;
+    padding: 10px;
+}
+
+header h3 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 5px;
+    text-decoration: none;
+}
+
+nav button {
+    display: flex;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgb(67, 67, 245);
+    color: #fff;
+}
+
+.stars-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+#stars, #comets {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.comet {
+    transform-origin: center center;
+    opacity: 0;
+    animation: comet 10s linear infinite;
+}
+
+@keyframes comet {
+    0% {
+        transform: translateX(0) translateY(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(-20vmax) translateY(10vmax) scale(1);
+    }
+    50% {
+        opacity: 0;
+        transform: translateX(-60vmax) translateY(30vmax) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100vmax) translateY(50vmax) scale(0);
+    }
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 100px 50px;
+    flex-wrap: wrap;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 90px;
+    border-radius: 15px;
+    width: 450px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.contact-form h2 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-form form input,
+.contact-form form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid white;
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.contact-form form textarea {
+    height: 100px;
+    resize: none;
+}
+
+.contact-form form button {
+    width: 100%;
+    padding: 12px;
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form form button:hover {
+    background-color: #ff9800;
+    color: white;
+}
+
+.memory-game {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    margin-top: 20px;
+}
+
+.memory-game h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.card {
+    width: 80px;
+    height: 100px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+}
+
+.card .front, .card .back {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s;
+}
+
+.card .front {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.card .back {
+    transform: rotateY(180deg);
+    overflow: hidden;
+}
+
+.card.flip .front {
+    transform: rotateY(180deg);
+}
+
+.card.flip .back {
+    transform: rotateY(360deg);
+}
+
+.timer-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.completion-message {
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .contact-container {
+        padding: 70px 30px;
+    }
+
+    .contact-form, .memory-game {
+        width: 70%;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 20px;
+    }
+
+    .contact-form, .memory-game {
+        width: 90%;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    header h3 {
+        font-size: 18px;
+    }
+
+    nav button {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .memory-game {
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .timer-container {
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+    }
+
+    .completion-message {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Game</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <div class="stars-wrapper">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <defs>
+                <radialGradient id="comet-gradient" cx="0" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="rgba(255,255,255,.8)" />
+                    <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+                </radialGradient>
+            </defs>
+            <g transform="rotate(-45)">
+                <ellipse class="comet" fill="url(#comet-gradient)" cx="0" cy="0" rx="150" ry="2" />
+            </g>
+            <style>
+                .comet {
+                    animation: comet 10s linear infinite;
+                }
+                @keyframes comet {
+                    0% {
+                        transform: translateX(0) translateY(0) scale(0);
+                        opacity: 0;
+                    }
+                    10% {
+                        opacity: 1;
+                        transform: translateX(-20vmax) translateY(10vmax) scale(1);
+                    }
+                    50% {
+                        opacity: 0;
+                        transform: translateX(-60vmax) translateY(30vmax) scale(0.8);
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: translateX(-100vmax) translateY(50vmax) scale(0);
+                    }
+                }
+            </style>
+        </svg>
+        <canvas id="stars"></canvas>
+        <canvas id="comets"></canvas>
+    </div>
+    <header>
+        <h3 style="text-decoration: none;"><a href="index.html" style="text-decoration: none;color: white;font-family: poppins, sans-serif;">Madesh</a></h3>
+        <nav>
+            <a href="projects.html" style="text-decoration: none;"><button class="nav-btn" style="text-decoration: none;">Projects</button></a>
+            <a href="contact.html" style="text-decoration: none;"><button class="nav-btn" style="text-decoration: none;">Contact</button></a>
+        </nav>
+    </header>
+    <div class="contact-container">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required><br>
+                <input type="email" placeholder="Your Email" required><br>
+                <textarea placeholder="Your Message" required></textarea><br>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <div class="memory-game">
+            <h2>Memory Flip Game</h2>
+            <div class="timer-container">
+                <div id="timer">0:00</div>
+            </div>
+            <div class="game-board">
+            </div>
+            <div class="completion-message" id="completionMessage"></div>
+        </div>
+    </div>
+
+    <script>
+        const board = document.querySelector('.game-board');
+        const cardsArray = [
+            'img-m-1.jpg', 'img-m-1.jpg',
+            'img-m-2.png', 'img-m-2.png',
+            'img-m-3.png', 'img-m-3.png',
+            'img-m-4.jpg', 'img-m-4.jpg',
+            'img-m-5.jpg', 'img-m-5.jpg',
+            'img-m-6.jpg', 'img-m-6.jpg'
+        ];
+
+        const timerDiv = document.getElementById('timer');
+        const completionMessageDiv = document.getElementById('completionMessage');
+        let seconds = 0;
+        let timerInterval;
+        let firstCard = null;
+        let secondCard = null;
+        let lockBoard = false;
+        let gameCompleted = false;
+    
+        function shuffle(array) {
+            array.sort(() => Math.random() - 0.5);
+        }
+    
+        function createBoard() {
+            shuffle(cardsArray);
+            cardsArray.forEach(image => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerHTML = `
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="${image}" alt="Memory Card" style="width: 100%; height: 100%;">
+                    </div>`;
+                card.addEventListener('click', flipCard);
+                board.appendChild(card);
+            });
+        }
+    
+        function flipCard() {
+            if (lockBoard || gameCompleted) return;
+            if (this === firstCard) return;
+            this.classList.add('flip');
+    
+            if (!firstCard) {
+                firstCard = this;
+                return;
+            }
+    
+            secondCard = this;
+            checkMatch();
+        }
+    
+        function checkMatch() {
+            const firstImg = firstCard.querySelector('.back img').src;
+            const secondImg = secondCard.querySelector('.back img').src;
+            let isMatch = firstImg === secondImg;
+            isMatch ? disableCards() : unflipCards();
+        }
+    
+        function disableCards() {
+            firstCard.removeEventListener('click', flipCard);
+            secondCard.removeEventListener('click', flipCard);
+            checkGameCompletion();
+            resetBoard();
+        }
+    
+        function unflipCards() {
+            lockBoard = true;
+            setTimeout(() => {
+                firstCard.classList.remove('flip');
+                secondCard.classList.remove('flip');
+                resetBoard();
+            }, 1000);
+        }
+    
+        function resetBoard() {
+            [firstCard, secondCard, lockBoard] = [null, null, false];
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (!gameCompleted) {
+                    seconds++;
+                    const minutes = Math.floor(seconds / 60);
+                    const secs = seconds % 60;
+                    timerDiv.textContent = `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+                }
+            }, 1000);
+        }
+
+        function checkGameCompletion() {
+            const totalCards = document.querySelectorAll('.card');
+            if (document.querySelectorAll('.card.flip').length === totalCards.length) {
+                gameCompleted = true;
+                clearInterval(timerInterval); // Stop the timer once game completes
+                showCompletionMessage();
+            }
+        }
+
+        function showCompletionMessage() {
+            let phrase;
+            if (seconds < 30) {
+                phrase = "Quick as my friend Cheetah!";
+            } else if (seconds < 60) {
+                phrase = "Fast, but a little slower than a cheetah!";
+            } else if (seconds < 120) {
+                phrase = "Not bad, but you can run faster!";
+            } else {
+                phrase = "You took your time, like a lazy sloth!";
+            }
+
+            completionMessageDiv.textContent = phrase;
+        }
+
+        createBoard();
+        startTimer();
+    </script>
+    <script src="scriptstar.js"></script>
+</body>
+</html>
